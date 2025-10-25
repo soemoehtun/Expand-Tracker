@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- Header -->
+    <header>
+        <span id="menu-btn">☰</span>
+        <h1>Expense Tracker</h1>
+        <span id="theme-toggle" title="Toggle Dark/Light Mode"></span>
+    </header>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li data-page="input-page">Input Page</li>
+            <li data-page="tracker-page">Daily Tracker</li>
+            <li data-page="status-page">Summary Status</li>
+            <li data-page="trend-page">Summary Trend</li>
+            <li data-page="backup-page">Backup Data</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Input Page -->
+        <section id="input-page" class="page active">
+            <form id="transaction-form">
+                <label>Date: <input type="date" id="date" required></label>
+                <label>Type:
+                    <select id="type">
+                        <option value="Expense">Expense</option>
+                        <option value="Budget">Budget</option>
+                    </select>
+                </label>
+                <label>Amount: <input type="number" id="amount" required></label>
+                <label>Category:
+                    <select id="category">
+                        <option value="Transport">Transport</option>
+                        <option value="Apparel">Apparel</option>
+                        <option value="Food">Food</option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                        <option value="House">House</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+                <label>Account:
+                    <select id="account">
+                        <option value="Cash">Cash</option>
+                        <option value="Bank">Bank</option>
+                        <option value="Online Pay">Online Pay</option>
+                    </select>
+                </label>
+                <label>Note: <input type="text" id="note"></label>
+                <div class="form-buttons">
+                    <button type="submit" id="add-btn">Add</button>
+                    <button type="button" id="update-btn" class="hidden">Update</button>
+                    <button type="button" id="delete-btn" class="hidden">Delete</button>
+                </div>
+            </form>
+            <!-- Footer / Developer Credit -->
+            <div class="developer-credit">
+                Developed By - 
+                <a href="https://bush-ballcap-829.notion.site/Hello-I-m-Soe-Moe-Tun-154ba19866024819b26330566b4b1fa1" target="_blank">
+                    Soe Moe Tun
+                </a>
+            </div>
+        </section>
+
+        <!-- Tracker Page -->
+        <section id="tracker-page" class="page">
+            <label for="month-filter">Select Month:</label>
+            <input type="month" id="month-filter">
+            <table id="tracker-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Account</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Status Page -->
+        <section id="status-page" class="page">
+            <label for="status-month">Select Month:</label>
+            <input type="month" id="status-month">
+            <h2>Monthly Summary</h2>
+            <table id="monthly-summary">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Budget</th>
+                        <th>Expense</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <h2>Daily Summary</h2>
+            <table id="daily-summary">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Budget</th>
+                        <th>Expense</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Trend Page -->
+        <section id="trend-page" class="page">
+            <label for="trend-month">Select Month:</label>
+            <input type="month" id="trend-month">
+            <h2>Daily Expenses</h2>
+            <canvas id="dailyChart"></canvas>
+            <h2>Expense by Category</h2>
+            <canvas id="categoryChart"></canvas>
+        </section>
+
+        <!-- Backup Page -->
+        <section id="backup-page" class="page">
+            <h2>Backup Data</h2>
+
+            <div class="backup-item">
+                <button id="clear-data-btn" class="backup-btn">Clear All Data</button>
+            </div>
+
+            <div class="backup-item">
+                <button id="export-data-btn" class="backup-btn">Export Data</button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

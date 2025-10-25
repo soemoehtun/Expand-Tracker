@@ -1,0 +1,325 @@
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, sans-serif;
+    margin-bottom: 12px;
+}
+
+body {
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Mobile container */
+#app {
+    width: 390px; /* Fixed mobile width */
+    height: 844px; /* Approx mobile height */
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #007bff;
+    color: white;
+    padding: 18px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    transition: background 0.3s, color 0.3s;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+#menu-btn {
+    position: absolute;
+    left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Dark/Light Mode Toggle */
+#mode-btn {
+    position: absolute;
+    right: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: -220px;
+    width: 200px;
+    height: 100%;
+    background: #007bff;
+    color: white;
+    padding-top: 60px;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sidebar li:hover {
+    background: #0056b3;
+}
+
+/* Main content */
+main {
+    padding: 30px 15px 20px 15px;
+    height: calc(100% - 52px);
+    overflow-y: auto;
+}
+
+/* Page sections */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Form Styles */
+form label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 3px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+form select {
+    background: #fff;
+    cursor: pointer;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Fix date and month input size on mobile & desktop */
+#input-page input[type="date"],
+#tracker-page input[type="month"],
+#status-page input[type="month"],
+#trend-page input[type="month"] {
+    /* Critical fix for mobile width inconsistency by resetting native browser styling */
+    -webkit-appearance: none; 
+    appearance: none; 
+    
+    font-size: 0.95rem;
+    padding: 10px;
+    height: 42px; /* same height as buttons */
+    box-sizing: border-box;
+}
+
+/* Tracker Page */
+#tracker-page label,
+#status-page label,
+#trend-page label {
+    display: block;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+#tracker-page input[type="month"],
+#status-page input[type="month"],
+#trend-page input[type="month"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+#tracker-page table,
+#status-page table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+#tracker-page th,
+#tracker-page td,
+#status-page th,
+#status-page td {
+    padding: 8px 6px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#tracker-page th,
+#status-page th {
+    background: #007bff;
+    color: white;
+}
+
+#tracker-page tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Equal column widths */
+#status-page table th,
+#status-page table td {
+    width: 25%;
+}
+
+/* Positive & Negative Balance */
+.positive {
+    color: green;
+    font-weight: bold;
+}
+
+.negative {
+    color: red;
+    font-weight: bold;
+}
+
+/* Trend Page */
+canvas {
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+/* Backup Page */
+.backup-item {
+    margin-bottom: 15px;
+}
+
+.backup-btn {
+    width: 100%; /* Full-width like form buttons */
+    padding: 9px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s;
+    margin-bottom: 10px;
+}
+
+.backup-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode #app {
+    background: #2c2c2c;
+}
+
+body.dark-mode header {
+    background: #222;
+}
+
+body.dark-mode .sidebar {
+    background: #222;
+}
+
+body.dark-mode .sidebar li:hover {
+    background: #444;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+    background: #333;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+/* Developer Credit Footer */
+.developer-credit {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.developer-credit a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.developer-credit a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-height: 390px) {
+    #app {
+        height: 844px;
+    }
+}
