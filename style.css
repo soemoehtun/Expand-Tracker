@@ -58,7 +58,7 @@ header h1 {
 /* Dark/Light Mode Toggle */
 #mode-btn {
     position: absolute;
-    right: 26px;
+    right: 27px;
     font-size: 1.8rem;
     cursor: pointer;
 }
@@ -331,4 +331,3 @@ body.dark-mode input[type="month"] {
 .developer-credit a:hover {
     text-decoration: underline;
 }
-
