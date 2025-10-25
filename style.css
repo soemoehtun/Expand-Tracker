@@ -11,18 +11,17 @@ body {
     background: #f0f2f5;
     display: flex;
     justify-content: center;
-    padding: 0; /* CHANGED: Removed 20px top/bottom padding */
+    padding: 0;
     transition: background 0.3s, color 0.3s;
 }
 
 /* Mobile container - NOW FULL SCREEN */
 #app {
-    width: 100vw; /* CHANGED: Now full viewport width */
-    height: 100vh; /* CHANGED: Now full viewport height */
-    max-width: 450px; /* NEW: Added max-width for large screens/desktops */
+    width: 100vw;
+    height: 100vh;
+    max-width: 450px;
     background: #fff;
-    /* REMOVED: box-shadow */
-    border-radius: 0; /* CHANGED: Removed border-radius */
+    border-radius: 0;
     overflow: hidden;
     position: relative;
     transition: background 0.3s, color 0.3s;
@@ -59,7 +58,7 @@ header h1 {
 /* Dark/Light Mode Toggle */
 #mode-btn {
     position: absolute;
-    right: 20px;
+    right: 17px;
     font-size: 1.8rem;
     cursor: pointer;
 }
@@ -95,7 +94,7 @@ header h1 {
 /* Main content */
 main {
     padding: 30px 15px 20px 15px;
-    height: calc(100vh - 52px); /* ADJUSTED: Use 100vh for height calculation */
+    height: calc(100vh - 52px);
     overflow-y: auto;
 }
 
@@ -124,6 +123,27 @@ form select {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 0.95rem;
+    /* Added consistent height for all form controls */
+    height: 40px; 
+}
+
+/* * FIX: Override default browser styling for date/month pickers.
+ * This ensures their size (especially width) is consistent across desktop and mobile.
+ */
+input[type="date"],
+input[type="month"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Reduced horizontal padding to remove extra space mobile browsers add */
+    padding: 10px 8px; 
+    
+    /* Center the text for better appearance in a small field */
+    text-align: center;
+    
+    /* Ensure height remains 40px as set above */
+    height: 40px;
 }
 
 form select {
@@ -173,7 +193,8 @@ button:hover {
 #status-page input[type="month"],
 #trend-page input[type="month"] {
     width: 100%;
-    padding: 10px;
+    /* Height is now controlled by the general input[type="month"] rule */
+    /* padding is controlled by the general input[type="month"] rule */
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 0.95rem;
@@ -285,6 +306,14 @@ body.dark-mode td {
     border-color: #555;
 }
 
+/* Dark mode fixes for date/month inputs */
+body.dark-mode input[type="date"],
+body.dark-mode input[type="month"] {
+    /* Need to specifically target the dark mode background for these inputs */
+    background-color: #333; 
+    color: #f0f0f0;
+}
+
 /* Developer Credit Footer */
 .developer-credit {
     margin-top: 20px;
@@ -302,15 +331,3 @@ body.dark-mode td {
 .developer-credit a:hover {
     text-decoration: underline;
 }
-
-
-/* Responsive */
-/* The media query is no longer necessary since #app is 100vh */
-/*
-@media screen and (max-height: 700px) {
-    #app {
-        height: 800px;
-    }
-}
-*/
-
