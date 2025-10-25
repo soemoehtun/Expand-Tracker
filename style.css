@@ -11,17 +11,18 @@ body {
     background: #f0f2f5;
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 0; /* CHANGED: Removed 20px top/bottom padding */
     transition: background 0.3s, color 0.3s;
 }
 
-/* Mobile container */
+/* Mobile container - NOW FULL SCREEN */
 #app {
-    width: 390px; /* Fixed mobile width */
-    height: 844px; /* Approx mobile height */
+    width: 100vw; /* CHANGED: Now full viewport width */
+    height: 100vh; /* CHANGED: Now full viewport height */
+    max-width: 450px; /* NEW: Added max-width for large screens/desktops */
     background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 12px;
+    /* REMOVED: box-shadow */
+    border-radius: 0; /* CHANGED: Removed border-radius */
     overflow: hidden;
     position: relative;
     transition: background 0.3s, color 0.3s;
@@ -51,15 +52,15 @@ header h1 {
 #menu-btn {
     position: absolute;
     left: 10px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
 }
 
 /* Dark/Light Mode Toggle */
 #mode-btn {
     position: absolute;
-    right: 10px;
-    font-size: 1.3rem;
+    right: 17px;
+    font-size: 1.8rem;
     cursor: pointer;
 }
 
@@ -94,7 +95,7 @@ header h1 {
 /* Main content */
 main {
     padding: 30px 15px 20px 15px;
-    height: calc(100% - 52px);
+    height: calc(100vh - 52px); /* ADJUSTED: Use 100vh for height calculation */
     overflow-y: auto;
 }
 
@@ -157,21 +158,6 @@ button:hover {
     display: none;
 }
 
-/* Fix date and month input size on mobile & desktop */
-#input-page input[type="date"],
-#tracker-page input[type="month"],
-#status-page input[type="month"],
-#trend-page input[type="month"] {
-    /* Critical fix for mobile width inconsistency by resetting native browser styling */
-    -webkit-appearance: none; 
-    appearance: none; 
-    
-    font-size: 0.95rem;
-    padding: 10px;
-    height: 42px; /* same height as buttons */
-    box-sizing: border-box;
-}
-
 /* Tracker Page */
 #tracker-page label,
 #status-page label,
@@ -198,7 +184,7 @@ button:hover {
 #status-page table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.85rem;
+    font-size: 0.6rem;
 }
 
 #tracker-page th,
@@ -317,9 +303,13 @@ body.dark-mode td {
     text-decoration: underline;
 }
 
+
 /* Responsive */
-@media screen and (max-height: 390px) {
+/* The media query is no longer necessary since #app is 100vh */
+/*
+@media screen and (max-height: 700px) {
     #app {
-        height: 844px;
+        height: 800px;
     }
 }
+*/
